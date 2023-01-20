@@ -1,0 +1,241 @@
+<!-- Forms 12) Crear programa, en una pàgina web, donde el usuario intruduce su altura (cm), edad, sexo -->
+<!-- y peso actual. El programa responde con una referencia de peso aproximado.
+Por ejemplo : usuario introduce 176, 22, H, 79.
+El programa ejecuta la fórmula: 50 + ((Altura-150) / 4) *3 + (Edad – 20) /4 * (0.9 si es mujer)
+El resultado es: peso referencia = 70,5. -->
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/>
+<title>Peso Referencia</title>
+<script>
+function pesoreferencia(datoaltura=1, datopeso=1, datoedad=1, datosexo="N")
+{
+let altura = parseInt(datoaltura);
+let edad = parseInt(datoedad);
+let peso = parseInt(datopeso);
+if (datosexo == "h" || datosexo=="H")
+{
+peso = 50 + ((altura - 150) / 4)*3 + (edad - 20)/4;
+}
+else peso = peso * 0.9;
+document.getElementById("resultado").innerHTML = peso;
+}
+</script>
+</head>
+<body>
+<form name="fdatos">
+Altura en cm (ej: 155) <input type="text" size="10" name="altura"/></br></br>
+Peso en kg (ej: 80) <input type="text" size="10" name="peso"/></br></br>
+Edad (ej: 45) <input type="text" size="10" name="edad"/></br></br>
+Sexo (H/M/O) <input type="text" size="10" name="sexo"/></br></br>
+<input id="pideal" type="button" value="Calcula"
+onclick="pesoreferencia(fdatos.altura.value,fdatos.peso.value,fdatos.edad.value,
+fdatos.sexo.value)" />
+<input type="reset" value="Reset" />
+</br></br> El peso aproximado de referencia es: <span id="resultado"></span>
+</form>
+</body>
+</html>
+www.ibserveis.com Javascript ES6 - Parte 1
+Forms 13) Juegos apuestas con FORMulario
+<!DOCTYPE html>
+<html><head><script type="text/javascript">
+function inic(){
+var DI = document.game.dinero.value = 100;
+}
+function calc(){
+var Din = parseInt(document.game.dinero.value);
+var Num = document.game.num.value;
+var Apu = parseInt(document.game.apuesta.value);
+var dado = Math.floor(Math.random() * 7);
+var ganancia = 0;
+if (Din > 0)
+{
+if (Num == dado)
+{
+document.game.dado.value = dado;
+document.game.res.value = ("Has ganado! " + Apu*2);
+ganancia = (Din+Apu*2);
+document.game.dinero.value = ganancia;
+}
+else{
+document.game.dado.value = dado;
+document.game.res.value = ("Has perdido!" + Apu);
+ganancia = (Din-Apu);
+document.game.dinero.value = ganancia;
+}
+}
+else{
+window.alert("Has perdido todo tu dinero!");
+}
+}
+</script>
+</head>
+<body>
+<h1 align="center">JUEGO APUESTAS</h1>
+<form name="game">
+<div align="center">
+Dinero: <input type="text" name="dinero" size="5"> &nbsp;&nbsp;
+Numero del dado: <input type="label" name="dado" size="5">
+<br><br>
+Introduzca un numero del 1 al 6: <input type="text" name="num" size="5">
+<br><br>
+Introduzca su apuesta: <input type="text" name="apuesta" size="5">
+<br><br>
+<input type="button" name="play" value="Jugar" onClick="calc()">
+<input type="button" name="Start" value="Start" onClick="inic()">
+<br><br>
+<input type="label" name="res" size="15">
+</div>
+</form>
+</body>
+</html>
+<!-- Javascript (ES6): BUCLES
+Para repetir instrucciones un número determinado de veces, se utiliza for.
+Más adelenta también se verá como utilizarlo sobre valores de datos en arrays y sus alternativas más
+actuales.
+Información de los bucles for : http://www.w3schools.com/js/js_loop_for.asp
+www.ibserveis.com Javascript ES6 - Parte 1
+ES6 Bucles 1) Realizar seguimiento de las variables i , cadena (puntos interrupción) -->
+<!DOCTYPE html>
+<html><body>
+<p id="central"></p>
+<script>
+let cadena="",i;
+for (i=0;i<5;i++)
+{
+cadena = cadena + `El numero es ${i} <br />`;
+}
+document.getElementById("central").innerHTML= cadena;
+</script>
+</body>
+</html>
+ES6 Bucles 2) Crear programa para que salgan en pantalla los siguiente números:
+54321
+4321
+321
+21
+1
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+for (x = 5; x > 0; x--)
+{
+for (j = x; j >= 1; j--)
+document.write(+j);
+document.write("</br>");
+}
+</script>
+</head></html>
+www.ibserveis.com Javascript ES6 - Parte 1
+ES6 Bucles 3) Realizar seguimiento de las variables i , x
+<!DOCTYPE html>
+<html><body>
+<p id="central"></p>
+<script>
+let i, j;
+let x = "<table>";
+for (i = 1; i <= 10; i++) // 10 filas
+{
+x= x + "<tr>";
+for (j = 1; j <= i; j++) // números en cada fila
+x= x + `<td> El numero es ${i} </td>`;
+x = x + "</tr>";
+}
+x = x + "</table>";
+document.getElementById("central").innerHTML= x;
+</script>
+</body>
+</html>
+ES6 Bucles 4) Ejecutar el programa y entender su lógica.
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/>
+<script>
+let fila;
+let columna = parseInt(prompt("Introduce el tamaño: ", "0"))
+for (fila = 1; fila <= columna; fila++)
+{
+for (espacios = columna - fila; espacios > 0; espacios--)
+document.write("&nbsp&nbsp");
+for (conta = 1; conta < (2 * fila); conta++)
+document.write("*");
+document.writeln("</br>");
+}
+</script>
+</head>
+</html>
+<!-- ES6 Bucles 5) En base al ejercicio anterior, realizar programa que dibuja un ROMBO
+www.ibserveis.com Javascript ES6 - Parte 1
+Es6 Bucles 6) Creación elementos dinámicos. -->
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/>
+<script>
+function funcionUno()
+{
+let result=""
+let i;
+for (i=1; i<=6; i++)
+{
+result = result + `<h${i}> Titulo ${i} </h>`;
+}
+document.getElementById("central").innerHTML= result;
+}
+</script>
+</head>
+<body>
+<p>Pulsa el boton y se crean HTML tags de la 1 a la 6</p>
+<button onclick="funcionUno()">Pulsa aqui</button>
+<div id="central"></div>
+</body>
+</html>
+<!-- ES6 Ejercicio Bucles 7)
+Realizar una página web, con programación en ES6, con al menos una función. En esta web se pide al
+usuario 2 números del 1 al 10. Una vez introducidos los números, el ordenador muestra una tabla
+(HTML) que contiene la tabla de multiplicar del número 1 hasta el número2.
+Ejemplo: El usuario introduce el número 2 y 4 , la web enseña por pantalla:
+2 x1 = 2
+2 x 2 = 4
+2 x 3 = 6
+2 x 4 = 8
+www.ibserveis.com Javascript ES6 - Parte 1
+EJERCICIOS RESUMEN
+En este apartado se han recopilado ejercicios para recordar conceptos importantes y acumular "horas
+de vuelo" programando. Como en todos los aprendizajes, cuanto más tiempo efectivo se dedica a
+aprender la materia, más resultados se consiguen.
+www.ibserveis.com Javascript ES6 - Parte 1
+Resumen 1)
+Programa que lee tres notas de un alumno, calcula la media e indicar el valor de la nota y la palabra
+“Excelente” si tiene un valor mayor que 8 , “Aprobado” entre 5 y 8 , “Suspendido” < 5 -->
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/>
+<script>
+let nota1, nota2, nota3;
+let media;
+dato1 = prompt("Primer número?", "0");
+dato2 = prompt("Segundo número?", "0");
+dato3 = prompt("Tercer número?", "0");
+nota1 = parseInt(dato1);
+nota2 = parseInt(dato2);
+nota3 = parseInt(dato3);
+media = (nota1 + nota2 + nota3)/3;
+if (media >8)
+{
+resultat = " Excelente";
+}
+else
+{
+if (media >=7)
+resultat = " Notable";
+else
+resultat = " Aprobado";
+}
+document.write(`La nota final es ${media} y eso es ${resultat}`);
+</script>
+</body>
+</html>
+Resumen 2)
+Añadir al programa anterior, el resultado de “Bien” si la nota está entre 5 y 6

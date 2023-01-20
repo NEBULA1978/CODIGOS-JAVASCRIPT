@@ -1,0 +1,36 @@
+<!--  ES6 - Parte 1
+Funciones 3)
+Ejecutar el siguiente programa: Funciones de calculo -->
+<!DOCTYPE html>
+<html><head>
+    <meta content="text/html; charset=utf-8">
+    <script>
+function Calcula(numero=1)
+{
+let calculo = numero * numero;
+document.write(`<p/> Resultado = ${calculo} </p>`);
+}
+</script>
+  </head>
+  <body>
+    <input type="button" onclick="Calcula()" value="Calculo">
+    <input type="button" onclick="Calcula(5)" value="Otro Calculo ">
+  </body>
+</html>
+<!-- Funciones 4) Ejecutar el siguiente código.
+¿Qué está haciendo la instrucción RETURN? ¿Cuál es su traducción del inglés? -->
+<!DOCTYPE html>
+<html><head>
+    <meta content="text/html; charset=utf-8">
+    <script>
+function suma(n1,n2) {
+return n1 + n2;
+}
+</script>
+  </head>
+  <body>
+    <input type="button" value="Suma" onclick="document.write(`Resultado:
+      ${suma(2,3)}`)">
+    <p><br>La función utiliza la sentencia <b>return</b> para devolver un valor.</p>
+  </body>
+</html>

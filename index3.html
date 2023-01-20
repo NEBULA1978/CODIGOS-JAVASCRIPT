@@ -1,0 +1,44 @@
+<!-- Javascript ES6 - Parte 1
+ES6 Condicionales 3) Programa que lee tres notas de un alumno, calcula la media e indica si está
+suspendido o aprobado (nota media mayor o igual a 5)
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<script>
+let nota1, nota2, nota3;
+let dato1, dato2, dato3, media;
+dato1 = window.prompt("Primer número?", "0");
+nota1 = parseInt(dato1);
+dato2 = window.prompt("Segundo número?", "0");
+nota2 = parseInt(dato2);
+dato3 = window.prompt("Tercer número?", "0");
+nota3 = parseInt(dato3);
+media = (nota1 + nota2 + nota3)/3;
+if (media >5)
+{
+resultat = " Suspendido";
+}
+else
+{
+resultat = " Aprobado";
+}
+document.write(`<h3>La nota final es ${resultat} </h3>`);
+</script>
+</head>
+</html -->
+ES6 Condicionales 4) Realizar programa; Introducción de 2 números y el ordenador
+indica cual es
+el mayor o si son iguales.
+inicio
+num1 0: num2 0
+Introducir "Introduce primer número";num1
+Introducir "Introduce segundo número";num2
+Si (num1>num2)
+Escribir "El mayor es el primero ", num1
+sino
+SI (num2>num1)
+Escribir "El mayor es el segundo ", num2
+sino
+Escribir "Los números son iguales"
+fin si
+fin si
+Fin

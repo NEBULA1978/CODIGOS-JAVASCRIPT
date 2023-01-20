@@ -1,0 +1,313 @@
+ <!-- Javascript ES6 - Parte 1 -->
+
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><title>Conversor Temperaturas</title>
+    <script>
+function EntraData() {
+let txt = document.getElementById("tempEntrada");
+let temp = parseInt(txt.value);
+return temp;
+}
+function EscriuData(nomZona, text) {
+document.getElementById(nomZona).innerHTML = text;
+}
+function toFahrenheit() {
+let temp = EntraData();
+temp = ((1.8) * temp + 32);
+EscriuData('Zona1', temp + " ºF"); // por pantalla la temp resultado
+FraseRelativa(temp);
+}
+function toCelsius() {
+let temp = EntraData();
+let temp2 = ((temp - 32) / 1.8);
+EscriuData('Zona1', temp2 + " ºC");
+FraseRelativa(temp);
+}
+function FraseRelativa(temperatura) {
+let cadena="-";
+if ((temperatura >= 14) && (temperatura < 32)) cadena ="Temperatura baja";
+if ((temperatura >= 32) && (temperatura < 68)) cadena ="Temperatura adecuada";
+if ((temperatura >= 68) && (temperatura <= 96)) cadena ="Temperatura alta";
+if (cadena=="-") cadena = "Temperatura desconocida";
+EscriuData('Zona2', cadena);
+}
+</script>
+  </head>
+  <body>
+    <h2>Conversor de temperatures</h2>
+    <input type="text" name="tempEntrada" id="tempEntrada">
+    <input type="button" value="Pasar a Fahrenheit" onClick="toFahrenheit()">
+    <input type="button" value="Pasar a Celsius" onClick="toCelsius()"><br>
+    <div id="Zona1"></div>
+    <div id="Zona2"></div>
+    <div id="Zona3"></div>
+  </body>
+</html>
+www.ibserveis.com Javascript ES6 - Parte 1
+Resumen 11)
+Programa donde se introducen 3 números y muestra cual es el mayor de los 3.
+Resumen 12) NO ejecutar el siguiente programa.
+Sin ver por pantalla: ¿Qué saldría si se introduce 178?
+<!DOCTYPE html>
+<html>
+  <head><meta charset="utf-8"/>
+    <script>
+let dato, altura;
+dato = prompt("Escribe tu altura en cm", "0");
+altura = parseInt(dato);
+if (altura >180) resultado = "Por encima de la media";
+else
+{
+if (altura >=140)
+resultado = "Altura media";
+else
+resultado = "Por debajo de la media";
+}
+document.write(resultado);
+</script>
+  </html>
+  Resumen 13) Ejecutar el siguiente programa
+  <!DOCTYPE html>
+  <html><head>
+      <script>
+let num1,num2,num3;
+let numA=prompt('Introduce primer número:','');
+let numB=prompt('Introduce segundo número:','');
+let numC=prompt('Introduce tercer número:','');
+num1=parseInt(numA);num2=parseInt(numB);num3=parseInt(numC);
+if (num1>num2 && num1>num3)
+{
+document.write(`El mayor es el ${num1} `);
+}
+else
+{
+if (num2>num3) document.write(`El mayor es el ${num2} `);
+else
+{
+document.write(`El mayor es el ${num3} `);
+}
+}
+</script>
+    </head>
+  </html>
+  www.ibserveis.com Javascript ES6 - Parte 1
+  AVANCE : PARTE2 - Curso práctico de programación 2017 -:
+  Adelanto de la Parte2 de los Ejercicios resueltos.
+  Los apartados que se estan preparando en la parte 2 son los siguientes:
+   Clases y Objetos
+   Arrays
+   JSON
+  www.ibserveis.com Javascript ES6 - Parte 1
+  EJERCICIO1 DE CLASES - 1) CommonJS, 2) Object Interface , 3)Clases ECMAScript
+  6
+  <!DOCTYPE html>
+  <html>
+    <head><meta charset="utf-8"/>
+      <title>Modules - CommonJS</title>
+      <!-- Teoria:
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Classes -->
+      <script>
+function ficha() {
+let alumno = {
+nombre: "Caterina",
+edad: 18
+};
+this.verNombre = function ()
+{
+return alumno.nombre;
+}
+this.verEdad = function ()
+{
+var resultado = alumno.edad;
+return resultado;
+}
+}
+function programa() {
+let obj = new ficha();
+document.writeln(`El nombre es ${obj.verNombre()} <br>`);
+document.writeln(`La edad es ${obj.verEdad()} <br>`);
+}
+</script>
+    </head>
+    <body>
+      <h3>Clase ficha </h3>
+      <input type="button" value="Pulsa aquí" onclick="programa()" />
+    </body>
+  </html>
+  www.ibserveis.com Javascript ES6 - Parte 1
+  <!DOCTYPE html>
+  <html>
+    <head><meta charset="utf-8"/>
+      <title>ObjectInterface - Clases1</title>
+      <script>
+let ficha = (function () {
+let alumno;
+this.alumno ="Marga";
+return {
+inicio ()
+{
+this.alumno = "Norat"
+},
+verNombre()
+{
+return this.alumno;
+},
+} // fin return
+})(); //fin 'clase'
+function programa() {
+ficha.inicio();
+document.writeln(`El nombre es ${ficha.verNombre()} <br>`);
+//document.writeln(`La edad es ${ficha.verEdad()} <br>`);
+}
+</script>
+    </head>
+    <body>
+      <h3>Clase ficha </h3>
+      <input type="button" value="Pulsa aquí" onclick="programa()" />
+    </body>
+  </html>
+  www.ibserveis.com Javascript ES6 - Parte 1
+  <!DOCTYPE html>
+  <html><head><meta charset="utf-8"/>
+      <title>ECMA6 - Clases1</title>
+      <!-- Teoria: https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Classes -->
+      <script>
+class EntradaDatos {
+constructor (){
+let nombre;
+let contrasenya;
+this.nombre ="admin";
+this.contrasenya ="1234"
+}
+introduceNombre ()
+{
+let valorEntrada = document.formEntrada.txtInicial.value;
+if (this.compruebaNombre(valorEntrada))
+this.nombre = valorEntrada;
+else
+this.nombre ="No valido";
+}
+compruebaNombre (valor)
+{
+let flag = true;
+if (valor == null || valor == "") flag = false;
+return flag
+}
+verNombre()
+{
+return this.nombre;
+}
+}
+function programa() {
+let obj = new EntradaDatos();
+obj.introduceNombre ();
+document.writeln(`El nombre es ${obj.verNombre()} <br>`);
+}
+</script>
+    </head>
+    <body>
+      <h3>Clase Entrada Datos </h3>
+      <form name="formEntrada">
+        <input type="text" name="txtInicial" />
+        <input type="button" value="Pulsa aquí" onclick="programa()" />
+      </form>
+    </body>
+  </html>
+  www.ibserveis.com Javascript ES6 - Parte 1
+  TRANSITIONS
+  1) Explicación con ejemplos:
+  https://robots.thoughtbot.com/transitions-and-transforms
+  2) Proyecto Menu-Slide con programación jQuery:
+  <!DOCTYPE html>
+  <html><head>
+      <title>Transitions amb jQuery</title>
+      <link href="estilos.css" rel="stylesheet" type="text/css" />
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+      <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script type="text/javascript">
+var toggle =1;
+$(document).ready(function () {
+$(".encabezado").click(function () {
+if (toggle) { $(".slide-menu").css("transform", "translate3d(0, 0, 0)");
+$(".contenedor").css("transform", "translate3d(250px, 0, 0)");
+toggle=0;}
+else { $(".slide-menu").css("transform", "translate3d(-250px, 0, 0)");
+$(".contenedor").css("transform", "translate3d(0, 0, 0)");
+toggle =1;}
+});
+}); // fi document.ready
+</script>
+    </head>
+    <body>
+      <div class="slide-menu">
+        <nav class="menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contacto</a></li>
+        </nav>
+      </div>
+      <div class="contenedor">
+        <div class="encabezado">
+          <h1>&equiv; Transitions</h1>
+        </div>
+        <h2>Texto e información de la web</h2>
+      </div> <!-- fi contenedor -->
+    </body>
+  </html>
+  www.ibserveis.com Javascript ES6 - Parte 1
+  estilos.CSS:
+  .slide-menu {
+  transform: translate3d(-250px, 0, 0);
+  position: absolute;
+  width: 250px;
+  background: #4f6b81;
+  color: #ddd;
+  left: 0;
+  transition: all .3s;
+  }
+  .slide-menu h1 {
+  height: 50px;
+  text-shadow: 1px 1px 1px #000;
+  }
+  .slide-menu img {
+  height: 90px;
+  }
+  .menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  }
+  .menu a {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1em;
+  padding: 15px;
+  background: linear-gradient(#0088CC,#006699);
+  border-bottom: 1px solid #1e222b;
+  box-shadow: inset 0px 1px 1px #8b9db3;
+  }
+  .menu a:hover {
+  background: linear-gradient(#3b3f48, #3c434d);
+  box-shadow: inset 0px 1px 1px #475059;
+  }
+  body {
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  }
+  .encabezado {
+  width:100%;
+  background-color: #006699;
+  color: #E9FAFA;
+  height: 90px;
+  display: block;
+  }
+  .contenedor {
+  width: 100%;
+  overflow: hidden;
+  min-height: 100%;
+  transform: translate3d(0, 0, 0);
+  transition: transform .3s;
+  }

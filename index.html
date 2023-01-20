@@ -1,0 +1,45 @@
+<!-- ES6 Condicionales 1) ALGORITMO (NO programa) con introducción de 2 números.
+Sacar por pantalla cual es el mayor.
+Cambiar en un papel y con lápiz, el pseudocódigo donde aparece XXX
+inicio
+num1 0: num2 0
+Introducir "Introduce primer número";num1
+Introducir "Introduce segundo número";num2
+Si (num1>num2)
+Escribir "El mayor es el número ", XXX
+sino
+Escriure "El mayor es el número ", XXX
+Fin si
+Fin
+ES6 Condicionales 2) Ejecutar el siguiente programa. -->
+<!-- Introducción de 2 números y el programa indica cuál es el mayor. -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"></head>
+<script>
+let dato1,dato2,num1, num2, resultado;
+dato1 = window.prompt("Primer número?", "0");
+num1 = parseInt(dato1);
+dato2 = window.prompt("Segundo número?", "0");
+num2 = parseInt(dato2);
+if (num1 > num2)
+{
+resultado = " el primero";
+}
+else
+{
+resultado = " el segundo";
+}
+document.write(` <h3>El  mumero mayor es ${dato2} </h3> `);
+document.write(` <h3>El menor es ${dato1} </h3> `);
+document.write(` <h3>El mayor es ${dato2} </h3> `);
+// Si pongo el 2ºnumero mayor va bien
+// Si pongo al reves no va bien jejeje
+// Si pongo 1º 6 y luego 3 :
+// El mumero mayor es 3 // El menor es 6
+// El mayor es 3 
+// Con condicionales solucionamos jejeje
+
+
+</script>
+</head>
+</html>++

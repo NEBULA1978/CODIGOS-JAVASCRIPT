@@ -1,0 +1,32 @@
+<!-- ES6 Condicionales 12) Como NO permitir valores incorrectos. --> -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+let num =1; let dato;
+while (num<10)
+{
+dato=prompt('Introduce número menor que 10:','');
+num=parseInt(dato);
+document.write(` ${num} <br> `);
+}
+document.write("Fin del programa");
+</script>
+  </head>
+</html>
+<!-- ES6 Condicionales 13) Ejecutar el siguiente programa para comprobar edad de los votantes. -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+let edad, final;
+edad = prompt("edad?", "0");
+if (isNaN(edad)) {
+final = "Error. No es un número";
+} else {
+final = (edad < 18) ? "Demasiado joven" : "Mayor de edad";
+}
+document.write(final);
+</script>
+  </head>
+</html>
